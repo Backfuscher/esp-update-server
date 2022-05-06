@@ -128,7 +128,7 @@ def upload():
             data = file.read()
             for __dev in platforms.keys():
                 if re.search(__dev.encode('UTF-8'), data, re.IGNORECASE):
-                    m = re.search(b'v\d+\.\d+\.\d+', data)
+                    m = re.search(b"update\?dev=" + __dev.encode('UTF-8') + b"&ver=(v\d+\.\d+\.\d+)\x00", data, re.IGNORECASE)
                     if m:
                         __ver = m.group()[1:].decode('utf-8')
                         if (platforms[__dev]['version'] is None) or (platforms[__dev]['version'] and version.parse(platforms[__dev]['version']) < version.parse(__ver)):
