@@ -154,6 +154,7 @@ def upload():
                             return redirect(url_for('index'))
                         else:
                             flash('Error: Version must increase. File not uploaded.')
+                            print(platforms[__dev])
                             return redirect(request.url)
                     else:
                         flash('Error: No version found in file. File not uploaded.')
@@ -271,4 +272,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int('5000'), debug=False)
+    app.run(host='0.0.0.0', port=int('27001'), debug=False)
