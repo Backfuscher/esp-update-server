@@ -128,9 +128,9 @@ def upload():
             data = file.read()
             for __dev in platforms.keys():
                 if re.search(__dev.encode('UTF-8'), data, re.IGNORECASE):
-                    m = re.search(b"update\?dev=" + __dev.encode('UTF-8') + b"&ver=(v\d+\.\d+\.\d+)\x00", data, re.IGNORECASE)
+                    m = re.search(b'OTAv\d+\.\d+\.\d+', data)
                     if m:
-                        __ver = m.group()[1:].decode('utf-8')
+                        __ver = m.group()[4:].decode('utf-8')
                         if (platforms[__dev]['version'] is None) or (platforms[__dev]['version'] and version.parse(platforms[__dev]['version']) < version.parse(__ver)):
                             old_file = platforms[__dev]['file']
                             filename = __dev + '_' + __ver.replace('.', '_') + '.bin'
@@ -153,8 +153,8 @@ def upload():
                                 flash('Error: Could not save file.')
                             return redirect(url_for('index'))
                         else:
-                            flash('Error: Version must increase. File not uploaded.')
-                            print(platforms[__dev])
+                            #flash('Error: Version must increase. File not uploaded.')
+                            flash(m)
                             return redirect(request.url)
                     else:
                         flash('Error: No version found in file. File not uploaded.')
