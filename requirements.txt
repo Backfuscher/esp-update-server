@@ -1,4 +1,4 @@
-flask==1.0.2
-pyYAML==5.1
-packaging==19.0
+flask
+pyYAML
+packaging
 jinja2
