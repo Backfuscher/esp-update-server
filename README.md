@@ -65,7 +65,7 @@ Below if an implementation for _ESP32_ that works with the server. Remember to c
 #include <HTTPUpdate.h>
 #include <WiFi.h>
 
-#define VERSION "v1.0.2"
+#define VERSION "OTAv1.0.2"
 #define HOST "Chase"
 
 const char* urlBase = "http://192.168.0.10:5000/update";
@@ -106,7 +106,7 @@ For _ESP8266_ the implementation is very similar with a few changes. Remember to
 #include <ESP8266httpUpdate.h>
 #include <ESP8266WiFi.h>
 
-#define VERSION "v1.0.2"
+#define VERSION "OTAv1.0.2"
 #define HOST "Chase"
 
 const char* urlBase = "http://192.168.0.10:5000/update";
